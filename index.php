@@ -6,7 +6,7 @@ declare(strict_types=1);
 $pathPrefix = ''; // e.g. /usr/share/nginx/oci-arm-host-capacity/
 
 require "{$pathPrefix}vendor/autoload.php";
-require 'src/database/sqlite.php';
+require 'src/Database/sqlite.php';
 
 use Dotenv\Dotenv;
 use Hitrov\Exception\ApiCallException;
