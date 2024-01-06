@@ -23,6 +23,7 @@ $dotenv->safeLoad();
 // Initialize SQLite
 $sqlite = new Hitrov\sqlite();
 $ProgrammTelegrammCount;
+$databaseFile = getcwd() . "/database.sqlite";
 
 /*
  * No need to modify any value in this file anymore!
@@ -107,8 +108,9 @@ foreach ($availabilityDomains as $availabilityDomainEntity) {
         echo "$message\n";
 
         if ($notifier->isSupported()) {
-            $sqlite->Connect_CreateDB();
-            $sqlite->createTelegramCountTable();
+            echo($databaseFile);
+            $sqlite->Connect_CreateDB($databaseFile);
+            $sqlite->createTelegramCountTable($databaseFile);
             if (!empty($config->TELEGRAM_BOT_SEND_MESSAGE_ONFAIL_ATTEMP)) {
                 if (empty($ProgrammTelegrammCount)) {
                     $ProgrammTelegrammCount = $sqlite->getTelegrammCounterinDB();

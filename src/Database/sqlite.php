@@ -12,13 +12,13 @@ class SqLite implements SqLiteInterface
     public $db;
     public $dsn;
 
-    public $databaseFile = './test.db';
+    #public $databaseFile = './test.db';
 
 
-    public function Connect_CreateDB()
+    public function Connect_CreateDB(string $databaseFile)
     {
         try {
-            $this->dsn = 'sqlite:' . $this->databaseFile;
+            $this->dsn = 'sqlite:' . $databaseFile;
             $this->db = new PDO($this->dsn);
             if ($this->db) {
                 echo "Verbindung zur SQLite-Datenbank erfolgreich hergestellt oder erstellt.";
@@ -31,7 +31,7 @@ class SqLite implements SqLiteInterface
         }
     }
 
-    public function createTelegramCountTable()
+    public function createTelegramCountTable(string $databaseFile)
     {
         try {
             $sql = "CREATE TABLE IF NOT EXISTS TelegramCounter (Counter VARCHAR(255))";
