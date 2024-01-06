@@ -26,6 +26,7 @@ class OciConfig
     public string $sourceDetails;
     public string $bootVolumeId;
     public string $bootVolumeSizeInGBs;
+    public ?int $TELEGRAM_BOT_SEND_MESSAGE_ONFAIL_ATTEMP;
 
     /**
      * @param string $region
@@ -38,6 +39,7 @@ class OciConfig
      * @param string $imageId
      * @param int $ocups
      * @param int $memoryInGBs
+     * @param int $TELEGRAM_BOT_SEND_MESSAGE_ONFAIL_ATTEMP
      */
     public function __construct(
         string $region,
@@ -49,7 +51,8 @@ class OciConfig
         string $subnetId,
         string $imageId,
         int $ocups = 4,
-        int $memoryInGBs = 24
+        int $memoryInGBs = 24,
+        int $TELEGRAM_BOT_SEND_MESSAGE_ONFAIL_ATTEMP
     )
     {
         $this->region = $region;
@@ -62,7 +65,7 @@ class OciConfig
         $this->imageId = $imageId;
         $this->ocpus = $ocups;
         $this->memoryInGBs = $memoryInGBs;
-        $this->imageId = $imageId;
+        $this->TELEGRAM_BOT_SEND_MESSAGE_ONFAIL_ATTEMP = $TELEGRAM_BOT_SEND_MESSAGE_ONFAIL_ATTEMP;
     }
 
     /**
