@@ -112,11 +112,14 @@ foreach ($availabilityDomains as $availabilityDomainEntity) {
             if (!empty($config->TELEGRAM_BOT_SEND_MESSAGE_ONFAIL_ATTEMP)) {
                 if (empty($ProgrammTelegrammCount)) {
                     $ProgrammTelegrammCount = $sqlite->getTelegrammCounterinDB();
+                    echo("empty($ProgrammTelegrammCount\n");
                     if (empty($ProgrammTelegrammCount)) {
                         $ProgrammTelegrammCount = 1;
-                    }
+                    echo("Still empty $ProgrammTelegrammCount\n");
+                    } 
+                   
                 }
-
+                echo($ProgrammTelegrammCount);
                 if ($config->TELEGRAM_BOT_SEND_MESSAGE_ONFAIL_ATTEMP == $ProgrammTelegrammCount) {
                     $notifier->notify($message);
                     $ProgrammTelegrammCount = 0;
